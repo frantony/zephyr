@@ -4,6 +4,7 @@ type: qemu
 simulation: qemu
 arch: mips
 toolchain:
+  - zephyr
   - xtools
   - gccmipsmti
 ram: 1024
