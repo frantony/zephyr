@@ -79,6 +79,12 @@
 #define C0_CR		$13
 #define C0_EPC		$14
 
+#define CP0_COUNT	$9
+#define CP0_COMPARE	$11
+#define CP0_STATUS	$12
+#define CP0_CAUSE	$13
+#define CP0_CONFIG	$16
+
 #else /* !__ASSEMBLER__ */
 
 /*
@@ -99,6 +105,12 @@ typedef unsigned long long	reg_t;
 #define C0_COMPARE	11
 #define C0_SR		12
 #define C0_CR		13
+
+#define CP0_COUNT	9
+#define CP0_COMPARE	11
+#define CP0_STATUS	12
+#define CP0_CAUSE	13
+#define CP0_CONFIG	16
 
 #endif /* __ASSEMBLER__ */
 

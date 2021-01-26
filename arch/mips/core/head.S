@@ -20,6 +20,10 @@
 #define ST0_IE	0x00000001
 #define ST0_ERL	0x00000004
 
+#ifndef MIPS_CONF_IMPL
+# define MIPS_CONF_IMPL	((0x1ff) << 16)
+#endif
+
 	.text
 	.align	2
 
@@ -38,6 +42,19 @@ __start:
 	and	k0, k1
 	mtc0	k0, C0_SR
 	nop
+
+	ehb
+
+	mfc0	k0, CP0_CONFIG
+	li	k1, MIPS_CONF_IMPL
+	and	k0, k1
+	/* CONF_CM_UNCACHED */
+	li	k1, 0x02
+	or	k0, k1
+	mtc0	k0, CP0_CONFIG
+	nop
+
+	ehb
 
 	la	sp, __stack
 
