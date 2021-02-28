@@ -44,8 +44,19 @@ void main(void)
 	}
 
 	while (1) {
+		led_is_on = true;
 		gpio_pin_set(dev, PIN, (int)led_is_on);
-		led_is_on = !led_is_on;
-		k_msleep(SLEEP_TIME_MS);
+		k_msleep(100);
+
+		led_is_on = false;
+		gpio_pin_set(dev, PIN, (int)led_is_on);
+		{
+			uint32_t start = k_uptime_get_32();
+			int32_t timeout_in_ms;
+
+			timeout_in_ms = 400;
+			while (start + timeout_in_ms - k_uptime_get_32() > 0) {
+			}
+		}
 	}
 }
